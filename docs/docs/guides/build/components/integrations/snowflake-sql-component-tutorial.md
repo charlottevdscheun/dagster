@@ -1,10 +1,10 @@
 ---
 title: 'Dagster & Snowflake with components'
-description: The dagster-snowflake library provides a SnowflakeTemplatedSqlComponent, which can be used to represent templated SQL queries as assets in Dagster.
+description: Execute custom SQL queries in Snowflake with Dagster
 sidebar_position: 402
 ---
 
-The [dagster-snowflake](/integrations/libraries/snowflake) library provides both a `BaseSnowflakeSqlComponent`, which can be used to write your own Snowflake components, and a ready-to-use `SnowflakeTemplatedSqlComponent` which can be used to execute SQL queries from Dagster in order to rebuild data assets in Snowflake. This guide will walk you through how to use the `SnowflakeTemplatedSqlComponent` to create a component that will execute custom SQL.
+Dagster provides a ready-to-use `TemplatedSQLComponent` which can be used alongside the `SnowflakeConnectionComponent` provided by the [dagster-snowflake](/integrations/libraries/snowflake) library to execute SQL queries in Dagster in order to rebuild data assets in your Snowflake instance. This guide will walk you through how to use these components to execute your SQL.
 
 ## 1. Prepare a Dagster project
 
@@ -20,9 +20,9 @@ Finally, add the `dagster-snowflake` library to the project:
 
 <CliInvocationExample path="docs_snippets/docs_snippets/guides/components/integrations/snowflake-sql-component/2-add-snowflake.txt" />
 
-## 2. Scaffold a Snowflake SQL component
+## 2. Scaffold a SQL component
 
-Now that you have a Dagster project, you can scaffold a Snowflake SQL component. You'll need to provide a name for your component. In this example, we'll create a component that will execute a SQL query to calculate the daily revenue from a table of sales transactions.
+Now that you have a Dagster project, you can scaffold a templated SQL component. You'll need to provide a name for your component. In this example, we'll create a component that will execute a SQL query to calculate the daily revenue from a table of sales transactions.
 
 <CliInvocationExample path="docs_snippets/docs_snippets/guides/components/integrations/snowflake-sql-component/3-scaffold-snowflake-component.txt" />
 
@@ -32,7 +32,7 @@ The scaffold call will generate a `defs.yaml` file:
 
 ## 3. Configure Snowflake connection
 
-You'll need to configure a Snowflake connection component to enable your SQL component to connect to your Snowflake instance. For more information on Snowflake configuration, see the [Using Snowflake with Dagster](/integrations/libraries/snowflake/using-snowflake-with-dagster#step-1-configure-the-snowflake-resource) guide.
+You'll need to configure a Snowflake connection component to enable the SQL component to connect to your Snowflake instance. For more information on Snowflake configuration, see the [Using Snowflake with Dagster](/integrations/libraries/snowflake/using-snowflake-with-dagster#step-1-configure-the-snowflake-resource) guide.
 
 First, scaffold a Snowflake connection component:
 
