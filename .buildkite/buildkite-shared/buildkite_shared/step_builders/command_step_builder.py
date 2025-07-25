@@ -30,7 +30,7 @@ SUPPORTED_PYTHON_VERSION = "3.12"
 BASE_IMAGE_NAME = "buildkite-test"
 BASE_IMAGE_TAG = "2024-07-17T120716"
 
-AWS_ACCOUNT_ID = os.getenv("AWS_ACCOUNT_ID", "968703565975")
+AWS_ACCOUNT_ID = os.getenv("AWS_ACCOUNT_ID")
 AWS_ECR_REGION = "us-west-2"
 
 ECR_LOGIN_FAILURE_EXIT_CODE = 200
@@ -200,12 +200,7 @@ class CommandStepBuilder:
                 ECR_PLUGIN: {
                     "login": True,
                     "no-include-email": True,
-                    "account_ids": [
-                        "968703565975",
-                        YamlQuotedString("007292508084"),
-                        "764506304434",
-                        "public.ecr.aws",
-                    ],
+                    "account_ids": AWS_ACCOUNT_ID,
                     "region": "us-west-2",
                 }
             }
